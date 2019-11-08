@@ -1,0 +1,4 @@
+ - generowanie punktów
+ - funkcji do generowania
+ - oba algorytmy są zaimplementowane 
+ - wizualizacja kunktów wyznaczonych 
