@@ -417,8 +417,8 @@ class RBTree(object):
         """return all nodes as a list"""
         cur = self.firstNode()
         result = []
-        while cur:
-            result.append(cur)
+        while(not cur is self.sentinel and not cur is None):
+            result.append(cur.key)
             cur = self.nextNode(cur)
         return result
 
@@ -445,6 +445,34 @@ class RBTree(object):
                 return None
         return cur.key
     
+    def firstNode(self):
+        cur = self.root
+        
+        if self.root is None:
+            return None
+        
+        while not cur.left is self.sentinel:
+            cur = cur.left
+            
+        return cur
+    
+    def nextNode(self, prev):
+        cur = prev
+        
+        if cur is None:
+            return None
+        
+        if not cur.right is self.sentinel:
+            cur = prev.right
+            while not cur.left is self.sentinel:
+                cur = cur.left
+            return cur
+        while 1:
+            cur = cur.parent
+            if cur is None or cur is self.sentinel:
+                return None
+            if prev.key < cur.key or prev.key == cur.key:
+                return cur
     
     def successor(self, prev):
         """returns None if there isn't one"""

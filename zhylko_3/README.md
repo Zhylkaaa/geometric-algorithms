@@ -22,3 +22,6 @@
 ## `predecessor(key)`
  - returns `predecessor`'s node `key`
 
+## `nodes()`
+ - returns list of `keys` if there're any, otherwise returns `[]`
+
