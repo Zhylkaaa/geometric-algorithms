@@ -35,7 +35,7 @@ class BST:
         x = self.root
         
         if(x is None):
-            print("Tree error: can't find element tree is empty")
+            print("Tree error in method find: can't find element tree is empty")
             return
         
         while(not x is None):
@@ -45,17 +45,19 @@ class BST:
                 return x
             else:
                 x = x.left
-        print("Tree error: can't find element, key=",key,"does not exist")
+        print("Tree error in method find: can't find element, key=",key,"does not exist")
         return None
     
     def remove(self, key):
         node = self.find(key)
         
         if(node is None):
+            print("Tree error in method remove: key",key,"does not exist")
+            #raise RuntimeError('trying to remove unexisting key')
             return
         
         if(self.root is None):
-            print("Tree error: can't remove element from empty tree")
+            print("Tree error in method remove: can't remove element from empty tree")
             return
         
         if(not node.left is None):
@@ -77,7 +79,6 @@ class BST:
                     node.p.left = node.left
                 else:
                     node.p.right = node.left
-            del node
             return
         
         if(not node.right is None):
@@ -90,7 +91,6 @@ class BST:
                     node.p.left = node.right
                 else:
                     node.p.right = node.right
-            del node
             return
         
         if(node is self.root):
@@ -100,13 +100,12 @@ class BST:
                 node.p.left = None
             else:
                 node.p.right = None
-        del node
         return
     
     def predecessor(self, key):
         node = self.find(key)
         if(node is None):
-            print("Tree error: key",key, "does not exist!")
+            print("Tree error in method predecessor: key",key, "does not exist!")
             return None
         
         if not node.left is None:
@@ -125,7 +124,7 @@ class BST:
     def successor(self, key):
         node = self.find(key)
         if(node is None):
-            print("Tree error: key",key, "does not exist!")
+            print("Tree error in method successor: key",key, "does not exist!")
             return None
         
         if not node.right is None:
@@ -142,7 +141,7 @@ class BST:
     
     def maximum(self):
         if(self.root is None):
-            print("Tree error: can't find maximum element if empty tree")
+            print("Tree error in method maximum: can't find maximum element if empty tree")
             return None
         
         node = self.root
@@ -152,7 +151,7 @@ class BST:
     
     def minimum(self):
         if(self.root is None):
-            print("Tree error: can't find minimum element if empty tree")
+            print("Tree error in method minimum: can't find minimum element if empty tree")
             return None
         
         node = self.root
