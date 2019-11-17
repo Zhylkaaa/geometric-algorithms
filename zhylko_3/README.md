@@ -5,10 +5,10 @@
  - key object shoult overwritte `__eq__`
 
 ## `insert(key)`
- - inserts element to tree. 
+ - inserts `key` to tree. 
 
 ## `remove(key)`
- - remove element from tree
+ - remove `key` from tree
 
 ## `minimum()`
  - returns minimum `key` or `None` if tree is empty
