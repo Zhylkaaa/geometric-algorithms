@@ -1,5 +1,9 @@
 import string
 
+# all credit to: https://github.com/MSingh3012/Red-Black-tree-in-python/blob/master/RBTree.py?fbclid=IwAR3LjX2Zr6-XzXAkUaVt8-0T6hx07FRVrAe2soL8ESvTXoohzJX9bPBpDCc
+
+# small bug fixes and additions: github.com/Zhylkaaa
+
 BLACK = 0
 RED = 1
 
@@ -219,10 +223,6 @@ class RBTree(object):
         #  allocate node for data and insert in tree  *
         #**********************************************
 
-        # we aren't interested in the value, we just
-        # want the TypeError raised if appropriate
-        hash(key)
-
         # find where node belongs
         current = self.root
         parent = None
@@ -363,10 +363,6 @@ class RBTree(object):
         #  find node containing data
         #******************************
 
-        # we aren't interested in the value, we just
-        # want the TypeError raised if appropriate
-        hash(key)
-
         current = self.root
 
         while current != self.sentinel:
@@ -468,7 +464,7 @@ class RBTree(object):
             cur = cur.parent
             if cur is None or cur is self.sentinel:
                 return None
-            if prev.key <= cur.key:
+            if prev.key < cur.key or prev.key == cur.key:
                 return cur.key
 
     def predecessor(self, next):
@@ -489,6 +485,6 @@ class RBTree(object):
             cur = cur.parent
             if cur is None or cur is self.sentinel:
                 return None
-            if cur.key < next.key:
+            if cur.key < next.key or next.key == cur.key:
                 return cur.key
 
